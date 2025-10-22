@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tri B2C - Three Minds, One Vision</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="nav-brand">
+                <div class="logo-container">
+                    <div class="logo-icon">T</div>
+                    <span class="brand-name">TRI B2C</span>
+                </div>
+                <p class="slogan">Three Minds, One Vision</p>
+            </div>
+            
+            <nav class="nav-menu">
+                <div class="category-selector">
+                    <select id="categorySelect" class="category-dropdown">
+                        <option value="b2b">B2B Marketplace</option>
+                        <option value="b2c">B2C Solutions</option>
+                        <option value="startup">Startup Hub</option>
+                    </select>
+                </div>
+                
+                <div class="search-bar">
+                    <input type="text" placeholder="Search products, services, suppliers..." class="search-input">
+                    <button class="search-btn"><i class="fas fa-search"></i></button>
+                </div>
+                
+                <div class="nav-actions">
+                    <button class="btn-secondary" onclick="showLoginModal()">Sign In</button>
+                    <button class="btn-primary" onclick="showRegisterModal()">Join Free</button>
+                    <button class="btn-add" onclick="showAddProductModal()"><i class="fas fa-plus"></i> Add Product</button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Welcome to Tri B2C Marketplace</h1>
+                <h2>Three Minds, One Vision</h2>
+                <p>Connect with millions of buyers and suppliers. Experience the power of collaborative commerce where three innovative minds work together to create one unified vision for your business success.</p>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <h3>5.2 Cr+</h3>
+                        <p>Active Buyers</p>
+                    </div>
+                    <div class="stat">
+                        <h3>1.5 Cr+</h3>
+                        <p>Trusted Suppliers</p>
+                    </div>
+                    <div class="stat">
+                        <h3>7.8 Cr+</h3>
+                        <p>Quality Products</p>
+                    </div>
+                </div>
+                <button class="btn-hero" onclick="showLoginModal()">Start Your Journey</button>
+            </div>
+            <div class="hero-image">
+                <img src="./parcel-paper-cartons-with-shopping-cart-logo-trolley-laptop-keyboard.jpg" alt="Business Growth">
+            </div>
+        </div>
+    </section>
+
+    <section class="top-products">
+        <div class="container">
+            <h2>Top Visiting Products & Businesses</h2>
+            <div class="products-grid" id="productsGrid">
+                <div class="product-card" onclick="requireLogin('Electronics & Gadgets')">
+                    <img src="./realistic-8k-image-highquality-electronic-gadgets.jpg" alt="Electronics">
+                    <div class="product-info">
+                        <h3>Electronics & Gadgets</h3>
+                        <p>Smartphones, Laptops, Smart Devices</p>
+                        <span class="price">₹8,000 - ₹80,000</span>
+                        <div class="product-actions">
+                            <button class="btn-edit" onclick="event.stopPropagation(); editProduct(1, 'Electronics & Gadgets')"><i class="fas fa-edit"></i></button>
+                            <button class="btn-delete" onclick="event.stopPropagation(); deleteProduct(1, 'Electronics & Gadgets')"><i class="fas fa-trash"></i></button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="product-card" onclick="requireLogin('Industrial Equipment')">
+                    <img src="./high-angle-view-factory.jpg" alt="Machinery">
+                    <div class="product-info">
+                        <h3>Industrial Equipment</h3>
+                        <p>Manufacturing Machines, Tools</p>
+                        <span class="price">₹2,00,000 - ₹15,00,000</span>
+                        <div class="product-actions">
+                            <button class="btn-edit" onclick="event.stopPropagation(); editProduct(2, 'Industrial Equipment')"><i class="fas fa-edit"></i></button>
+                            <button class="btn-delete" onclick="event.stopPropagation(); deleteProduct(2, 'Industrial Equipment')"><i class="fas fa-trash"></i></button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="product-card" onclick="requireLogin('Fashion & Apparel')">
+                    <img src="./men-fashion.jpg" alt="Fashion">
+                    <div class="product-info">
+                        <h3>Fashion & Apparel</h3>
+                        <p>Clothing, Accessories, Footwear</p>
+                        <span class="price">₹500 - ₹5,000</span>
+                        <div class="product-actions">
+                            <button class="btn-edit" onclick="event.stopPropagation(); editProduct(3, 'Fashion & Apparel')"><i class="fas fa-edit"></i></button>
+                            <button class="btn-delete" onclick="event.stopPropagation(); deleteProduct(3, 'Fashion & Apparel')"><i class="fas fa-trash"></i></button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="product-card" onclick="requireLogin('Home & Garden')">
+                    <img src="./arrangement-different-artisan-workshop-objects.jpg" alt="Home">
+                    <div class="product-info">
+                        <h3>Home & Garden</h3>
+                        <p>Furniture, Decor, Garden Tools</p>
+                        <span class="price">₹1,000 - ₹25,000</span>
+                        <div class="product-actions">
+                            <button class="btn-edit" onclick="event.stopPropagation(); editProduct(4, 'Home & Garden')"><i class="fas fa-edit"></i></button>
+                            <button class="btn-delete" onclick="event.stopPropagation(); deleteProduct(4, 'Home & Garden')"><i class="fas fa-trash"></i></button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="product-card" onclick="requireLogin('Automotive Parts')">
+                    <img src="./highquality-car-parts-automotive-spares-white-background.jpg" alt="Automotive">
+                    <div class="product-info">
+                        <h3>Automotive Parts</h3>
+                        <p>Car Parts, Accessories, Tools</p>
+                        <span class="price">₹2,000 - ₹50,000</span>
+                        <div class="product-actions">
+                            <button class="btn-edit" onclick="event.stopPropagation(); editProduct(5, 'Automotive Parts')"><i class="fas fa-edit"></i></button>
+                            <button class="btn-delete" onclick="event.stopPropagation(); deleteProduct(5, 'Automotive Parts')"><i class="fas fa-trash"></i></button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="product-card" onclick="requireLogin('Health & Beauty')">
+                    <img src="./doctors-hands-lovingly-treating-his-patients.jpg" alt="Health">
+                    <div class="product-info">
+                        <h3>Health & Beauty</h3>
+                        <p>Cosmetics, Wellness Products</p>
+                        <span class="price">₹300 - ₹3,000</span>
+                        <div class="product-actions">
+                            <button class="btn-edit" onclick="event.stopPropagation(); editProduct(6, 'Health & Beauty')"><i class="fas fa-edit"></i></button>
+                            <button class="btn-delete" onclick="event.stopPropagation(); deleteProduct(6, 'Health & Beauty')"><i class="fas fa-trash"></i></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card" onclick="requireLogin('Embroidery machine')">
+                    <img src="./portrait-businesswoman-owner-working.jpg" alt="Embroidery">
+                    <div class="product-info">
+                        <h3>Embroidery machine</h3>
+                        <p>Smartphones, Laptops, Smart Devices</p>
+                        <span class="price">₹8,000 - ₹80,000</span>
+                        <div class="product-actions">
+                            <button class="btn-edit" onclick="event.stopPropagation(); editProduct(1, 'Electronics & Gadgets')"><i class="fas fa-edit"></i></button>
+                            <button class="btn-delete" onclick="event.stopPropagation(); deleteProduct(1, 'Electronics & Gadgets')"><i class="fas fa-trash"></i></button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="product-card" onclick="requireLogin('Industrial Equipment')">
+                    <img src="./cast-iron-dumbbell-weights.jpg" alt="Machinery">
+                    <div class="product-info">
+                        <h3>Gym Equipment</h3>
+                        <p>Manufacturing Machines, Tools</p>
+                        <span class="price">₹2,00,000 - ₹15,00,000</span>
+                        <div class="product-actions">
+                            <button class="btn-edit" onclick="event.stopPropagation(); editProduct(2, 'Industrial Equipment')"><i class="fas fa-edit"></i></button>
+                            <button class="btn-delete" onclick="event.stopPropagation(); deleteProduct(2, 'Industrial Equipment')"><i class="fas fa-trash"></i></button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="product-card" onclick="requireLogin('Fashion & Apparel')">
+                    <img src="./Amazing-Reasons-Artificial-Jewelry-Makes-Us-Better.jpg.webp" alt="Fashion">
+                    <div class="product-info">
+                        <h3>Jewelley & immitaion</h3>
+                        <p>Clothing, Accessories, Footwear</p>
+                        <span class="price">₹500 - ₹5,000</span>
+                        <div class="product-actions">
+                            <button class="btn-edit" onclick="event.stopPropagation(); editProduct(3, 'Fashion & Apparel')"><i class="fas fa-edit"></i></button>
+                            <button class="btn-delete" onclick="event.stopPropagation(); deleteProduct(3, 'Fashion & Apparel')"><i class="fas fa-trash"></i></button>
+                        </div>
+                    </div>
+                </div>
+                
+                
+            </div>
+        </div>
+    </section>
+
+    <section class="business-career">
+        <div class="container">
+            <div class="section-content">
+                <div class="business-info">
+                    <h2>Grow Your Business</h2>
+                    <p>Join thousands of successful businesses on Tri B2C. Our platform provides comprehensive tools and resources to help you expand your reach, connect with the right customers, and achieve sustainable growth.</p>
+                    <ul class="benefits-list">
+                        <li><i class="fas fa-check"></i> Access to millions of verified buyers</li>
+                        <li><i class="fas fa-check"></i> Advanced analytics and insights</li>
+                        <li><i class="fas fa-check"></i> 24/7 customer support</li>
+                        <li><i class="fas fa-check"></i> Secure payment processing</li>
+                    </ul>
+                    <button class="btn-primary" onclick="showLoginModal()">Start Selling Today</button>
+                </div>
+                <div class="career-info">
+                    <h2>Career Opportunities</h2>
+                    <p>Be part of our innovative team that's revolutionizing the B2C marketplace. We offer exciting career opportunities for talented individuals who share our vision of connecting businesses and customers.</p>
+                    <div class="job-openings">
+                        <div class="job-card">
+                            <h4>Software Developer</h4>
+                            <p>Full-time • Remote</p>
+                        </div>
+                        <div class="job-card">
+                            <h4>Marketing Specialist</h4>
+                            <p>Full-time • Hybrid</p>
+                        </div>
+                        <div class="job-card">
+                            <h4>Customer Success Manager</h4>
+                            <p>Full-time • On-site</p>
+                        </div>
+                    </div>
+                    <button class="btn-secondary" onclick="showLoginModal()">View All Positions</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="makers">
+        <div class="container">
+            <h2>Meet Our Makers</h2>
+            <p class="makers-subtitle">The three innovative minds behind Tri B2C</p>
+            <div class="makers-grid">
+                <div class="maker-card">
+                    <div class="maker-avatar">
+                        <img src="./WhatsApp Image 2025-09-26 at 12.50.36 PM.jpeg" alt="Maker 1">
+                    </div>
+                    <h3>Darshil Chothani</h3>
+                    <p class="maker-role">Backend-Developer</p>
+                    <div class="maker-social">
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://www.instagram.com/darshil9494/" target="_blank"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="maker-card">
+                    <div class="maker-avatar">
+                        <img src="./WhatsApp Image 2025-09-25 at 4.35.16 PM.jpeg" alt="Maker 2">
+                    </div>
+                    <h3>Ved Anghan</h3>
+                    <p class="maker-role">UI UX-Designer</p>
+                    <div class="maker-social">
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://www.instagram.com/vedanghan?igsh=NHE3NzNrcG9zMmJu" target="_blank"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="maker-card">
+                    <div class="maker-avatar">
+                        <img src="./WhatsApp Image 2025-09-25 at 4.27.10 PM.jpeg" alt="Maker 3">
+                    </div>
+                    <h3>Jenish Bhadani</h3>
+                    <p class="maker-role">Frontend-Developer</p>
+                    <div class="maker-social">
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://www.instagram.com/jenish_4773?igsh=MXY4dHJtY2U5dzgwaw==" target="_blank"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-brand">
+                        <div class="logo-container">
+                            <div class="logo-icon">T</div>
+                            <span class="brand-name">Tri B2C</span>
+                        </div>
+                        <p class="slogan">Three Minds, One Vision</p>
+                        <p>Connecting businesses and customers through innovative marketplace solutions.</p>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#" onclick="requireLogin('About Us')">About Us</a></li>
+                        <li><a href="#" onclick="requireLogin('Careers')">Careers</a></li>
+                        <li><a href="#" onclick="requireLogin('Press')">Press</a></li>
+                        <li><a href="#" onclick="requireLogin('Blog')">Blog</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#" onclick="requireLogin('B2B Solutions')">B2B Solutions</a></li>
+                        <li><a href="#" onclick="requireLogin('B2C Platform')">B2C Platform</a></li>
+                        <li><a href="#" onclick="requireLogin('Startup Hub')">Startup Hub</a></li>
+                        <li><a href="#" onclick="requireLogin('API Access')">API Access</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#" onclick="requireLogin('Help Center')">Help Center</a></li>
+                        <li><a href="#" onclick="requireLogin('Contact Us')">Contact Us</a></li>
+                        <li><a href="#" onclick="requireLogin('Privacy Policy')">Privacy Policy</a></li>
+                        <li><a href="#" onclick="requireLogin('Terms of Service')">Terms of Service</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Connect</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://www.instagram.com/indiamart/?hl=en" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                    <div class="contact-info">
+                        <p><i class="fas fa-phone"></i> +91 93275 43751</p>
+                        <p><i class="fas fa-envelope"></i> info@trib2c.com</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Tri B2C. All rights reserved. | College Project Submission</p>
+            </div>
+        </div>
+    </footer>
+
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('loginModal')">&times;</span>
+            <h2>Sign In to Tri B2C</h2>
+            <form class="auth-form">
+                <div class="form-group">
+                    <label for="loginEmail">Email Address</label>
+                    <input type="email" id="loginEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" required>
+                </div>
+                <button type="submit" class="btn-primary">Sign In</button>
+                <p class="auth-switch">Don't have an account? <a href="#" onclick="switchToRegister()">Join Free</a></p>
+            </form>
+        </div>
+    </div>
+
+    <div id="registerModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('registerModal')">&times;</span>
+            <h2>Join Tri B2C</h2>
+            <form class="auth-form">
+                <div class="form-group">
+                    <label for="registerName">Full Name</label>
+                    <input type="text" id="registerName" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerEmail">Email Address</label>
+                    <input type="email" id="registerEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerPassword">Password</label>
+                    <input type="password" id="registerPassword" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerCompany">Company Name</label>
+                    <input type="text" id="registerCompany">
+                </div>
+                <button type="submit" class="btn-primary">Create Account</button>
+                <p class="auth-switch">Already have an account? <a href="#" onclick="switchToLogin()">Sign In</a></p>
+            </form>
+        </div>
+    </div>
+
+    <div id="addProductModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('addProductModal')">&times;</span>
+            <h2>Add New Product</h2>
+            <form class="product-form">
+                <div class="form-group">
+                    <label for="productName">Product Name</label>
+                    <input type="text" id="productName" required>
+                </div>
+                <div class="form-group">
+                    <label for="productDescription">Description</label>
+                    <textarea id="productDescription" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="productPrice">Price Range</label>
+                    <input type="text" id="productPrice" placeholder="₹1,000 - ₹10,000" required>
+                </div>
+                <div class="form-group">
+                    <label for="productCategory">Category</label>
+                    <select id="productCategory" required>
+                        <option value="">Select Category</option>
+                        <option value="electronics">Electronics & Gadgets</option>
+                        <option value="industrial">Industrial Equipment</option>
+                        <option value="fashion">Fashion & Apparel</option>
+                        <option value="home">Home & Garden</option>
+                        <option value="automotive">Automotive Parts</option>
+                        <option value="health">Health & Beauty</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn-primary">Add Product</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="editProductModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('editProductModal')">&times;</span>
+            <h2>Edit Product</h2>
+            <form class="product-form">
+                <div class="form-group">
+                    <label for="editProductName">Product Name</label>
+                    <input type="text" id="editProductName" required>
+                </div>
+                <div class="form-group">
+                    <label for="editProductDescription">Description</label>
+                    <textarea id="editProductDescription" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="editProductPrice">Price Range</label>
+                    <input type="text" id="editProductPrice" required>
+                </div>
+                <div class="form-group">
+                    <label for="editProductCategory">Category</label>
+                    <select id="editProductCategory" required>
+                        <option value="electronics">Electronics & Gadgets</option>
+                        <option value="industrial">Industrial Equipment</option>
+                        <option value="fashion">Fashion & Apparel</option>
+                        <option value="home">Home & Garden</option>
+                        <option value="automotive">Automotive Parts</option>
+                        <option value="health">Health & Beauty</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn-primary">Update Product</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
